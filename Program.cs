@@ -1,4 +1,6 @@
-﻿// the ourAnimals array will store the following: 
+﻿// Guided Project
+
+// the ourAnimals array will store the following: 
 string animalSpecies = "";
 string animalID = "";
 string animalAge = "";
@@ -96,7 +98,7 @@ while (continueProgram)
     readResult = Console.ReadLine();
     if (readResult != null)
     {
-        menuSelection = readResult.ToLower();
+        menuSelection = readResult.Trim().ToLower();
     }
 
     Console.WriteLine($"You selected menu option {menuSelection}.");
@@ -145,6 +147,10 @@ while (continueProgram)
             Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
+            break;
+        case "exit":
+            continueProgram = false;
+            continue;
             break;
         // ... (cases for other menu options)
         default:
