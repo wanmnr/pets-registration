@@ -77,11 +77,11 @@ for (int i = 0; i < maxPets; i++)
 
 Console.Clear();
 
-bool validSelection = false;
-while (!validSelection)
-{
+bool continueProgram = true;
 
-    Console.WriteLine("Welcome to the Contoso PetFriends app. Your main menu options are:");
+while (continueProgram)
+{
+    Console.WriteLine("Welcome to the PetFriends app. Your main menu options are:");
     Console.WriteLine(" 1. List all of our current pet information");
     Console.WriteLine(" 2. Add a new animal friend to the ourAnimals array");
     Console.WriteLine(" 3. Ensure animal ages and physical descriptions are complete");
@@ -160,6 +160,24 @@ while (!validSelection)
     if (int.TryParse(menuSelection, out int selectionNumber) &&
         selectionNumber >= 1 && selectionNumber <= 8)
     {
-        validSelection = true;
+        // Handle the chosen menu option (code omitted)
+
+        // Ask if the user wants to continue with the program
+        Console.WriteLine("\nDo you want to return to the main menu (y/n)?");
+        string continueChoice = Console.ReadLine().ToLower();
+
+        // Validate user's choice (continue or exit)
+        while (continueChoice != "y" && continueChoice != "n")
+        {
+            Console.WriteLine("Invalid choice. Please enter 'y' or 'n'.");
+            continueChoice = Console.ReadLine().ToLower();
+        }
+
+        continueProgram = continueChoice == "y";
+    }
+    else
+    {
+        Console.WriteLine("Invalid selection. Please enter a number between 1 and 8.");
     }
 }
+Console.WriteLine("Exiting the program. Thank you for using PetFriends!");
