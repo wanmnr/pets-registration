@@ -1,0 +1,14 @@
+/Users/devour/dotnet-console/pets-registration/bin/Debug/net8.0/pets-registration
+/Users/devour/dotnet-console/pets-registration/bin/Debug/net8.0/pets-registration.deps.json
+/Users/devour/dotnet-console/pets-registration/bin/Debug/net8.0/pets-registration.runtimeconfig.json
+/Users/devour/dotnet-console/pets-registration/bin/Debug/net8.0/pets-registration.dll
+/Users/devour/dotnet-console/pets-registration/bin/Debug/net8.0/pets-registration.pdb
+/Users/devour/dotnet-console/pets-registration/obj/Debug/net8.0/pets-registration.GeneratedMSBuildEditorConfig.editorconfig
+/Users/devour/dotnet-console/pets-registration/obj/Debug/net8.0/pets-registration.AssemblyInfoInputs.cache
+/Users/devour/dotnet-console/pets-registration/obj/Debug/net8.0/pets-registration.AssemblyInfo.cs
+/Users/devour/dotnet-console/pets-registration/obj/Debug/net8.0/pets-registration.csproj.CoreCompileInputs.cache
+/Users/devour/dotnet-console/pets-registration/obj/Debug/net8.0/pets-registration.dll
+/Users/devour/dotnet-console/pets-registration/obj/Debug/net8.0/refint/pets-registration.dll
+/Users/devour/dotnet-console/pets-registration/obj/Debug/net8.0/pets-registration.pdb
+/Users/devour/dotnet-console/pets-registration/obj/Debug/net8.0/pets-registration.genruntimeconfig.cache
+/Users/devour/dotnet-console/pets-registration/obj/Debug/net8.0/ref/pets-registration.dll
