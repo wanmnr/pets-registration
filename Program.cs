@@ -17,7 +17,6 @@ string menuSelection = "";
 string[,] ourAnimals = new string[maxPets, 6];
 
 // TODO: Convert the if-elseif-else construct to a switch statement
-
 // create some initial ourAnimals array entries
 for (int i = 0; i < maxPets; i++)
 {
@@ -76,13 +75,12 @@ for (int i = 0; i < maxPets; i++)
 }
 
 // display the top-level menu options
-
-Console.Clear();
-
 bool continueProgram = true;
 
 while (continueProgram)
 {
+    Console.Clear();
+    Console.WriteLine();
     Console.WriteLine("Welcome to the PetFriends app. Your main menu options are:");
     Console.WriteLine(" 1. List all of our current pet information");
     Console.WriteLine(" 2. Add a new animal friend to the ourAnimals array");
@@ -110,16 +108,42 @@ while (continueProgram)
     // and improve code readability. Each case block corresponds to a specific
     // menu selection, and the default case handles invalid input.
 
-    switch (menuSelection.ToLower())
+    switch (menuSelection)
     {
         case "1":
-            // Code to list all pet information
+            // List all of our current pet information
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0] != "ID #: ")
+                {
+                    Console.WriteLine();
+                    for (int j = 0; j < 6; j++)
+                    {
+                        Console.WriteLine(ourAnimals[i, j]);
+                    }
+                }
+            }
+            Console.WriteLine("\n\rPress the Enter key to continue.");
+            readResult = Console.ReadLine();
             break;
         case "2":
-            // Code to add a new animal
+            // Add a new animal friend to the ourAnimals array
+            //
+            // The ourAnimals array contains
+            //    1. the species (cat or dog). a required field
+            //    2. the ID number - for example C17
+            //    3. the pet's age. can be blank at initial entry.
+            //    4. the pet's nickname. can be blank.
+            //    5. a description of the pet's physical appearance. can be blank.
+            //    6. a description of the pet's personality. can be blank.
+            
             break;
         case "3":
-            Console.WriteLine("Challenge Project - please check back soon to see progress.");
+            // Ensure animal ages and physical descriptions are complete
+            //
+            //    ourAnimals[i, 2] = "Age: " + animalAge;
+            //    ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
+
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
