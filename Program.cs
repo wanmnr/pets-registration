@@ -308,7 +308,7 @@ while (continueProgram)
                     ourAnimals[i, 2] = "Age: " + animalAge.ToString();
                 }
 
-                if (ourAnimals[i, 4] == "Physical description: " && ourAnimals[i,0] != "ID #: ")
+                if (ourAnimals[i, 4] == "Physical description: " && ourAnimals[i, 0] != "ID #: ")
                 {
                     do
                     {
@@ -327,7 +327,7 @@ while (continueProgram)
                             }
                         }
                     } while (validEntry == false);
-                    ourAnimals[animalAge, 4] = "Physical description: " + animalPhysicalDescription;
+                    ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
                 }
 
             }
@@ -395,12 +395,83 @@ while (continueProgram)
             }
             Console.WriteLine("\n\rAge and physical description fields are complete for all of our friends. \n\rPress the Enter key to continue");
             readResult = Console.ReadLine();
-            
             break;
 
         case "5":
             // Edit an animal’s age");
-            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+
+            // Get the ID of the pet whose age needs to be edited
+            bool validID = false;
+            string? petIDtoEdit = "";
+            while (!validID)
+            {
+                Console.WriteLine("Enter the ID of the pet whose age you want to edit (e.g., C1, D2):");
+                petIDtoEdit = Console.ReadLine();
+
+                // Validate that the entered ID exists in the ourAnimals array
+                bool petFound = false;
+                for (int i = 0; i < maxPets; i++)
+                {
+                    if (ourAnimals[i, 0].Trim() == "ID #: " + petIDtoEdit)
+                    {
+                        petFound = true;
+                        Console.WriteLine();
+                        break;
+                    }
+                }
+                validID = petFound;
+
+                // if (!petFound)
+                // {
+                //     Console.WriteLine("Could not find the pet with ID {petIDtoEdit}.");
+                // }
+
+                if (!validID)
+                {
+                    Console.WriteLine("Invalid ID entered. Please try again.\n");
+                }
+            }
+
+            // Get the new age from the user, ensuring a valid integer is entered
+            int newAge = 0;
+            while (true)
+            {
+                Console.WriteLine($"Enter the new age for pet ID #: {petIDtoEdit} (must be a positive integer):");
+                string? input = Console.ReadLine();
+
+                if (int.TryParse(input, out newAge))
+                {
+                    if (newAge > 0)
+                    {
+                        // Valid positive integer entered, break the loop
+                        Console.WriteLine();
+                        break;
+                    }
+                    else
+                    {
+                        // The parsed integer is not positive
+                        Console.WriteLine("Invalid age entered. Please enter a positive integer.\n");
+                    }
+                }
+                else
+                {
+                    // Input could not be parsed to an integer
+                    Console.WriteLine("Invalid input. Please enter a positive integer.\n");
+                }
+            }
+
+
+            // Update the age in the ourAnimals array
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0].Trim() == "ID #: " + petIDtoEdit)
+                {
+                    ourAnimals[i, 2] = $"Age: {newAge}";
+                    Console.WriteLine($"Age updated for pet ID #: {petIDtoEdit} -> Age: {newAge}.\n");
+                    break;
+                }
+            }
+
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
@@ -429,8 +500,6 @@ while (continueProgram)
         case "exit":
             continueProgram = false;
             continue;
-            break;
-
         // ... (cases for other menu options)
         default:
             Console.WriteLine("Invalid selection. Please enter a number between 1 and 8.\n");
@@ -442,21 +511,21 @@ while (continueProgram)
 
     // Check for valid selection
     // Validate user input as a number within the valid range
-    if (int.TryParse(menuSelection, out int selectionNumber) &&
+    if (!string.IsNullOrEmpty(menuSelection) && int.TryParse(menuSelection, out int selectionNumber) &&
         selectionNumber >= 1 && selectionNumber <= 8)
     {
         // Handle the chosen menu option (code omitted)
 
         // Ask if the user wants to continue with the program
         Console.WriteLine("\nDo you want to return to the main menu (y/n)?");
-        string continueChoice = Console.ReadLine().ToLower();
+        string? continueChoice = Console.ReadLine()?.ToLower();
         Console.WriteLine();
 
         // Validate user's choice (continue or exit)
         while (continueChoice != "y" && continueChoice != "n")
         {
             Console.WriteLine("Invalid choice. Please enter 'y' or 'n'.");
-            continueChoice = Console.ReadLine().ToLower();
+            continueChoice = Console.ReadLine()?.ToLower();
             Console.WriteLine();
         }
 
